@@ -17,10 +17,11 @@ EXTENDED_CHANNELS = [
     (0.1, 0),  # Lead Melody
     (0.08, 20),  # Detuned Lead Melody
     (0.05, 0),  # Chord Backing 1
-    (0.05, 0),  # Chord Backing 2
-    (0.05, 0),  # Chord Backing 3
+    (0.05, 5),  # Chord Backing 2
+    (0.05, 5),  # Chord Backing 3
     (0.12, 0),  # Bass Line
     (0.08, 20),  # Drums1
+    (0.08, 0),  # Drums2
 ]
 
 def extend_audio():
@@ -231,7 +232,6 @@ class App:
             "l16 o4co0ffo4co0ffo4cco0f8r8r4.",
             "r1r1"
         ]
-        
 
         pyxel.sounds[0].mml("".join(prelude_ch1))
         pyxel.sounds[1].mml("".join(prelude_ch2))
@@ -249,7 +249,7 @@ class App:
         pyxel.sounds[15].mml("".join(melody_ch6))
         pyxel.sounds[16].mml("".join(melody_ch7))
         pyxel.musics[0].set([0],[1],[2],[3],[4],[5],[6])
-        pyxel.musics[1].set([10],[11],[12],[13],[14],[15],[16]
+        pyxel.musics[1].set([10],[11],[12],[13],[14],[15],[16])
         pyxel.run(self.update, self.draw)
 
     def update(self):
@@ -257,8 +257,7 @@ class App:
     
     def draw(self):
         pyxel.cls(1)
-        pyxel.text(14, 50, "TO MAKE THE END OF BATTLE", 7)
-        pyxel.text(14, 55, "play_pos:"+str(pyxel.play_pos(0)[1]), 6)
+        pyxel.text(14, 60, "TO MAKE THE END OF BATTLE", 7)
             
 if __name__ == "__main__":
     App()
