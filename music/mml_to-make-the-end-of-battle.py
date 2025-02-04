@@ -17,11 +17,10 @@ EXTENDED_CHANNELS = [
     (0.1, 0),  # Lead Melody
     (0.08, 20),  # Detuned Lead Melody
     (0.05, 0),  # Chord Backing 1
-    (0.05, 5),  # Chord Backing 2
-    (0.05, 5),  # Chord Backing 3
+    (0.05, 0),  # Chord Backing 2
+    (0.05, 0),  # Chord Backing 3
     (0.12, 0),  # Bass Line
-    (0.08, 20),  # Drums1
-    (0.08, 0),  # Drums2
+    (0.08, 20),  # Drums
 ]
 
 def extend_audio():
@@ -60,7 +59,7 @@ class App:
         extend_audio()
         self.bgm = PreludeMusic(0,1)
             
-        envelope = "t110 x0:7777555444333333456 x1:66665454545454543434343232321212121111 x4:5210 x5:310"
+        envelope = "t110 x0:7777555444333333456 x1:66665454545454543434343232321212121111 x4:410 x5:310"
         prelude_ch1 = [
             envelope,
             "r1",
@@ -166,20 +165,10 @@ class App:
             envelope,
             "x1 @1 r1 o2l16 ec+<b-gec+<b-g r2",
             "x1 o2 l2 eg b-4.a8g ea b- r2",
-            "l1 rrrrrrr",
-            "r1",
-            "l1 rrrrrrr",
-            "r1",
-            "r1r1r1r1",
-            "r1r1r1r1",
-            "r1r1r1r1",
+            "l1 rrrrrrrr rrrrrrrr rrrrrrrr",
             "x1 @1 r1 o2l16 ec+<b-gec+<b-g r2",
             "x1 o2 l2 eg b-4.a8g ea b- r2",
-            "l1 rrrrrrr",
-            "r1",
-            "l1 rrrrrrr",
-            "r1",
-            "r1r1r1r1",
+            "l1 rrrrrrrr rrrrrrrr rrrrrrrr",
             "x1 o2 l16 dr8dr8dd&d8r4.",
             "r1r1"
         ]
@@ -257,7 +246,12 @@ class App:
     
     def draw(self):
         pyxel.cls(1)
-        pyxel.text(14, 60, "TO MAKE THE END OF BATTLE", 7)
+        title1 = "TO MAKE THE END OF BATTLE"
+        title2 = "from YS2"
+        counter = "PLAYING:"+str(pyxel.play_pos(0)[1])
+        pyxel.text((128 - len(title1)*4)//2, 52, title1, 7)
+        pyxel.text((128 - len(title2)*4)//2, 60, title2, 7)
+        pyxel.text((128 - len(counter)*4)//2, 82, "PLAYING:"+str(pyxel.play_pos(0)[1]),6)
             
 if __name__ == "__main__":
     App()
